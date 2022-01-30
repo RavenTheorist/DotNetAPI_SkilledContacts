@@ -22,7 +22,7 @@ This is a WepAPI made in .NET Core which showcases a handling of a list of Conta
    - Repository
    - Mediator
 
-## Improvements / going farther:
+## Improvements / going further:
 - Although a logger catching exceptions was implemented, we still need to add some more data validations when reading requests.
 - Use some more detailed status codes in the controller, using specific attributes/tags [] for each method.
 - Add CRUD endpoint for the ContactSkill joining table.

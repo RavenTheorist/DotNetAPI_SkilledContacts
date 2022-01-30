@@ -1,7 +1,13 @@
 # DotNetAPI_SkilledContacts
 This is a WepAPI made in .NET Core which showcases a handling of a list of Contacts linked to a list of Skills.
 
+How to use:
+- Open the json appsettings json files and set the link to your SQL server there
+- Launch the app using Contacts.API.UI -> IIS Express, which will open the Swagger page
+
+
 Please read this:
+- Project made using VisualStudio 2019, ASP.Net Core 5.0 and Entity Framework Core 5.0.13
 - The project contains a custom logger CustomMessageLogger.cs to catch exceptions and warning.
 - Security was implemented, but commented/disabled for an easier use. CORS and JWT were implemented.
 - Migrations were generated, this project uses a code first approach in terms of Database.

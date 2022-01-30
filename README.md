@@ -4,7 +4,7 @@ This is a WepAPI made in .NET Core which showcases a handling of a list of Conta
 How to use:
 - Open the json appsettings json files and set the link to your SQL server there
 - Launch the app using Contacts.API.UI -> IIS Express, which will open the Swagger page
-![VisualStudio 19 Launch Picture](https://github.com/RavenTheorist/DotNetAPI_SkilledContacts/blob/blob/main/GithubReadmeImages/VS2019_LaunchSelection.jpg?raw=true)
+![VisualStudio 19 Launch Picture](https://raw.githubusercontent.com/RavenTheorist/DotNetAPI_SkilledContacts/main/GithubReadmeImages/VS2019_LaunchSelection.jpg)
 
 Please read this:
 - Project made using VisualStudio 2019, ASP.Net Core 5.0 and Entity Framework Core 5.0.13

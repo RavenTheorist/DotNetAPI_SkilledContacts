@@ -16,8 +16,8 @@ namespace Contacts.Core.Skills.Infrastructure.Data.TypeConfigurations
 		{
 			builder.ToTable("Skill");
 
-			builder.HasKey(item => item.ContactEmail);
-			builder.HasOne(item => item.Contact).WithMany(item => item.Skills);
+			builder.HasKey(item => item.Id);
+			//builder.HasOne(item => item.Contact).WithMany(item => item.Skills);
 		}
 		#endregion//Public methods
 	}

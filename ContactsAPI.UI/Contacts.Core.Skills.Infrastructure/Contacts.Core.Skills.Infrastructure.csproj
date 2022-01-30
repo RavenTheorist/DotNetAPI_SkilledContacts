@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contacts.Core.Framework\Contacts.Core.Framework.csproj" />
-    <ProjectReference Include="..\Contacts.Core.Skills.Domain\Contacts.Core.Contacts.Domain.csproj" />
+    <ProjectReference Include="..\Contacts.Core.Skills.Domain\Contacts.Core.Skills.Domain.csproj" />
   </ItemGroup>
 
 </Project>

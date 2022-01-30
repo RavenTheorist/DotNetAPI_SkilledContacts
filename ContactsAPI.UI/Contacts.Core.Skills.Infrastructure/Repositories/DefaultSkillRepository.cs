@@ -13,10 +13,10 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 	public class DefaultSkillRepository : ISkillRepository
 	{
 		#region Fields
-		private readonly SkillsContext _context = null;
+		private readonly Data.AppContext _context = null;
 		#endregion//Fields
 		#region Constructors
-		public DefaultSkillRepository(SkillsContext context)
+		public DefaultSkillRepository(Data.AppContext context)
 		{
 			this._context = context;
 		}
@@ -25,11 +25,11 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 		#region Public methods
 		public ICollection<Skill> GetAll(string contactEmail)
 		{
-			var query = this._context.Skills.Include(item => item.Contact).AsQueryable();
+			var query = this._context.Skills.Include(item => item.Contacts).AsQueryable();
 
 			if (contactEmail.Length > 0)
 			{
-				query = query.Where(item => item.ContactEmail == contactEmail);
+				//query = query.Where(item => item.ContactEmail == contactEmail);
 			}
 
 			return query.ToList();

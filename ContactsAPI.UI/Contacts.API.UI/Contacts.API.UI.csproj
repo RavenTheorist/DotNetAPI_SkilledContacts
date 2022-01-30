@@ -19,6 +19,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.13" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
@@ -32,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contacts.Core.Skills.Domain\Contacts.Core.Contacts.Domain.csproj" />
-    <ProjectReference Include="..\Contacts.Core.Skills.Infrastructure\Contacts.Core.Contacts.Infrastructure.csproj" />
+    <ProjectReference Include="..\Contacts.Core.Skills.Domain\Contacts.Core.Skills.Domain.csproj" />
+    <ProjectReference Include="..\Contacts.Core.Skills.Infrastructure\Contacts.Core.Skills.Infrastructure.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

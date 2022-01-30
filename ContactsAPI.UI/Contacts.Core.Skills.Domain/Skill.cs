@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 namespace Contacts.Core.Skills.Domain
 {
 	/// <summary>
-	/// Contact skill
+	/// Skill object class
 	/// </summary>
 	public class Skill
 	{
 		#region Properties
+		public int Id { get; set; }
 		public string Name { get; set; }
 		public int Level { get; set; }
-		public string ContactEmail { get; set; }
-		public Contact Contact { get; set; }
+		public List<Contact> Contacts { get; set; }
+
+		// Navigation Properties
+		public List<ContactSkill> ContactSkills { get; set; }
 		#endregion//Properties
 	}
 }

@@ -10,10 +10,13 @@ using System.Threading.Tasks;
 
 namespace Contacts.Core.Skills.Infrastructure.Data
 {
-	public class SkillsContextFactory : IDesignTimeDbContextFactory<SkillsContext>
+	/// <summary>
+	/// Database configuration for the migrations and the appSettings.json
+	/// </summary>
+	public class AppContextFactory : IDesignTimeDbContextFactory<AppContext>
 	{
 		#region Public methods
-		public SkillsContext CreateDbContext(string[] args)
+		public AppContext CreateDbContext(string[] args)
 		{
 			// Build a configuration to be able to access our appSettings.json
 			ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
@@ -30,7 +33,7 @@ namespace Contacts.Core.Skills.Infrastructure.Data
 			// Set the DB provider
 			builder.UseSqlServer(configurationRoot.GetConnectionString("SkillsDatabase"), b => b.MigrationsAssembly("Contacts.Core.Skills.Data.Migrations"));
 
-			SkillsContext context = new SkillsContext(builder.Options);
+			AppContext context = new AppContext(builder.Options);
 
 			return context;
 		}

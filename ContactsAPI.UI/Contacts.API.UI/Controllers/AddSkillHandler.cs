@@ -31,8 +31,8 @@ namespace Contacts.API.UI.Controllers
 			// Don't set the ID, because it increments automatically...
 			Skill addedSkill = this._repository.AddOne(new Skill()
 			{
-				Name = request.SkillDto.Name,
-				Level = request.SkillDto.Level
+				Id = request.SkillDto.Id,
+				Name = request.SkillDto.Name
 			});
 
 			// Save to database

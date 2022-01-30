@@ -12,15 +12,16 @@ using System.Threading.Tasks;
 
 namespace Contacts.Core.Skills.Infrastructure.Data
 {
-	public class SkillsContext : IdentityDbContext, IUnitOfWork
+	public class AppContext : DbContext, IUnitOfWork
 	{
 		#region Constructors
-		public SkillsContext([NotNullAttribute] DbContextOptions options) : base(options) { }
-		public SkillsContext() : base() { }
+		public AppContext([NotNullAttribute] DbContextOptions options) : base(options) { }
+		public AppContext() : base() { }
 		#endregion//Constructors
 		#region Properties
-		public DbSet<Skill> Skills { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
+		public DbSet<Skill> Skills { get; set; }
+		public DbSet<ContactSkill> ContactSkills { get; set; }
 		#endregion//Properties
 
 		#region Internal methods
@@ -30,6 +31,7 @@ namespace Contacts.Core.Skills.Infrastructure.Data
 
 			modelBuilder.ApplyConfiguration(new SkillEntityTypeConfiguration());
 			modelBuilder.ApplyConfiguration(new ContactEntityTypeConfiguration());
+			modelBuilder.ApplyConfiguration(new ContactSkillEntityTypeConfiguration());
 		}
 		#endregion//Internal methods
 	}

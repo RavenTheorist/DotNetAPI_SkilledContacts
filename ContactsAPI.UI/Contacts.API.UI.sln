@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C63201AF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{6B9D4224-53CE-4BAF-B960-8EDD52589AD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Core.Contacts.Domain", "Contacts.Core.Skills.Domain\Contacts.Core.Contacts.Domain.csproj", "{AAE5B2CD-D40C-4306-9BAF-AAD9D7918112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Core.Skills.Domain", "Contacts.Core.Skills.Domain\Contacts.Core.Skills.Domain.csproj", "{AAE5B2CD-D40C-4306-9BAF-AAD9D7918112}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Core.Contacts.Infrastructure", "Contacts.Core.Skills.Infrastructure\Contacts.Core.Contacts.Infrastructure.csproj", "{576B71BB-1E2D-4CC2-BCC9-0C2A06607354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Core.Skills.Infrastructure", "Contacts.Core.Skills.Infrastructure\Contacts.Core.Skills.Infrastructure.csproj", "{576B71BB-1E2D-4CC2-BCC9-0C2A06607354}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.Core.Framework", "Contacts.Core.Framework\Contacts.Core.Framework.csproj", "{69B47AF0-0521-4E25-B4B7-AB304DD95853}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacts.API.UI", "Contacts.API.UI\Contacts.API.UI.csproj", "{17F1033D-3EBC-40C0-AA64-934A73D774B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts.Core.Skills.Data.Migrations", "Contacts.Core.Skills.Data.Migrations\Contacts.Core.Skills.Data.Migrations.csproj", "{9A6DF6E2-0007-4B57-A2A1-AD9562AA5973}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{17F1033D-3EBC-40C0-AA64-934A73D774B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17F1033D-3EBC-40C0-AA64-934A73D774B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17F1033D-3EBC-40C0-AA64-934A73D774B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A6DF6E2-0007-4B57-A2A1-AD9562AA5973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A6DF6E2-0007-4B57-A2A1-AD9562AA5973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A6DF6E2-0007-4B57-A2A1-AD9562AA5973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A6DF6E2-0007-4B57-A2A1-AD9562AA5973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{AAE5B2CD-D40C-4306-9BAF-AAD9D7918112} = {6B9D4224-53CE-4BAF-B960-8EDD52589AD3}
 		{576B71BB-1E2D-4CC2-BCC9-0C2A06607354} = {6B9D4224-53CE-4BAF-B960-8EDD52589AD3}
 		{69B47AF0-0521-4E25-B4B7-AB304DD95853} = {6B9D4224-53CE-4BAF-B960-8EDD52589AD3}
+		{9A6DF6E2-0007-4B57-A2A1-AD9562AA5973} = {6B9D4224-53CE-4BAF-B960-8EDD52589AD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34AA56C0-550C-4F76-8D04-504C2DE0711B}

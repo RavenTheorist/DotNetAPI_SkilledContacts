@@ -1,6 +1,9 @@
 # DotNetAPI_SkilledContacts
 A WepAPI made in .NET Core showcasing some of the possibilities, while handling a list of Contacts linked to a list of Skills
 
+N.B.:
+- Database server can be configured in the appsettings.json
+
 Purpose:
 Create the "Contacts API". It's a simple API, where a user can get a quick overview over all contacts resources like persons, skills...
 

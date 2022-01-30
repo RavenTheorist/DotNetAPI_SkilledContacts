@@ -7,7 +7,7 @@ namespace ContactsAPI.UI.Application.DTOs
 {
 	public class SkillDTO
 	{
+		public int Id { get; set; }
 		public string Name { get; set; }
-		public int Level { get; set; }
 	}
 }

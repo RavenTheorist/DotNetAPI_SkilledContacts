@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Contacts.Core.Skills.Domain
 {
+	/// <summary>
+	/// Contact object class
+	/// </summary>
 	public class Contact
 	{
 		#region Properties
@@ -16,12 +19,12 @@ namespace Contacts.Core.Skills.Domain
 		public string Email { get; set; }
 		public string Address { get; set; }
 		public string FirstName { get; set; }
-		[Required]
 		public string Fullname { get; set; }
 		[Phone]
 		public string MobilePhoneNumber { get; set; }
 
-		public List<Skill> Skills { get; set; }
+		// Navigation Properties
+		public List<ContactSkill> ContactSkills { get; set; }
 		#endregion//Properties
 	}
 }

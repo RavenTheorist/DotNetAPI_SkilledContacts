@@ -35,7 +35,7 @@ namespace Contacts.API.UI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<SkillsContext>(options =>
+			services.AddDbContext<Contacts.Core.Skills.Infrastructure.Data.AppContext>(options =>
 			{
 				options.UseSqlServer(this.Configuration.GetConnectionString("SkillsDatabase"), sqlOption => { });
 			});
@@ -46,7 +46,7 @@ namespace Contacts.API.UI
 				// Add some authentication params
 				//options.SignIn.RequireConfirmedEmail = true;
 				//options.Password.RequireDigit = true;
-			}).AddEntityFrameworkStores<SkillsContext>();
+			}).AddEntityFrameworkStores<Contacts.Core.Skills.Infrastructure.Data.AppContext>();
 
 			services.AddCustomOptions(this.Configuration);
 			services.AddInjections()

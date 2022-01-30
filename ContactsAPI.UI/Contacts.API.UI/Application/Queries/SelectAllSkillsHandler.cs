@@ -26,7 +26,8 @@ namespace Contacts.API.UI.Application.Queries
 		public Task<List<SkillResumeDTO>> Handle(SelectAllSkillsQuery request, CancellationToken cancellationToken)
 		{
 			var skillsList = this._repository.GetAll(request.ContactEmail);
-			var result = skillsList.Select(item => new SkillResumeDTO() { SkillName = item.Name, SkillLevel = item.Level, ContactEmail = item.Contact.Email, NbSkillsFromThisContact = (item.Contact?.Skills?.Count).GetValueOrDefault(0) }).ToList();
+			var result = new List<SkillResumeDTO>();
+			//result = skillsList.Select(item => new SkillResumeDTO() { SkillId = item.Id, SkillName = item.Name, SkillLevel = item.Level, NbSkillsFromThisContact = item.Contacts?.Count }).ToList();
 
 			return Task.FromResult(result);
 

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Contacts.API.UI.Application.Commands
 {
+	/// <summary>
+	/// Delete one skill from the database
+	/// </summary>
 	public class DeleteSkillCommand : IRequest<SkillDTO>
 	{
 		public int SkillId { get; set; }

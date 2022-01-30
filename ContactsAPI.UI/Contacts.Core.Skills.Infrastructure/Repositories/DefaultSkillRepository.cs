@@ -28,12 +28,15 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 			return this._context.Skills.Add(skill).Entity;
 		}
 
-		public Skill UpdateOne(int skillId, Skill updatedSkill)
+		public Skill UpdateOne(int skillId, Skill updateSkillModel)
 		{
-			Skill existingSkill = this._context.Skills.Where(skill => skill.Id == skillId).First();
+			Skill existingSkill = this._context.Skills.FirstOrDefault(skill => skill.Id == skillId);
 
-			existingSkill.Name = updatedSkill.Name;
-			existingSkill.Level = updatedSkill.Level;
+			if (existingSkill != null)
+			{
+				existingSkill.Name = updateSkillModel.Name;
+				existingSkill.Level = updateSkillModel.Level;
+			}
 
 			return existingSkill;
 		}
@@ -64,7 +67,7 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 
 			if (this._context.Skills.Count() > 0)
 			{
-				deletedSkill = this._context.Skills.Single(skill => skill.Id == skillId);
+				deletedSkill = this._context.Skills.FirstOrDefault(skill => skill.Id == skillId);
 
 				if (deletedSkill != null)
 				{

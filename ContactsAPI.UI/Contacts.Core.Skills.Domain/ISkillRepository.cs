@@ -26,7 +26,7 @@ namespace Contacts.Core.Skills.Domain
 		/// <summary>
 		/// Updates one skill with the given values
 		/// </summary>
-		/// <param name="skillId">Searched skill Id</param>
+		/// <param name="skillId">Searched skill Id as a key of search</param>
 		/// <param name="updatedSkill">Values for the new skill Id</param>
 		Skill UpdateOne(int skillId, Skill updatedSkill);
 

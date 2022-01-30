@@ -19,6 +19,7 @@ namespace ContactsAPI.UI.ExtensionMethods
 		/// <param name="services"></param>
 		public static IServiceCollection AddInjections(this IServiceCollection services)
 		{
+			services.AddScoped<IContactRepository, DefaultContactRepository>();
 			services.AddScoped<ISkillRepository, DefaultSkillRepository>();
 			services.AddMediatR(typeof(Startup));
 

@@ -38,7 +38,11 @@ namespace Contacts.API.UI.Application.Commands
 				Console.WriteLine("Exception thrown while trying to save db changes: %s", e.Message);
 			}
 
-			SkillDTO result = new SkillDTO { Id = deletedSkill.Id, Level = deletedSkill.Level, Name = deletedSkill.Name };
+			SkillDTO result = null;
+			if (deletedSkill != null)
+			{
+				result = new SkillDTO { Id = deletedSkill.Id, Level = deletedSkill.Level, Name = deletedSkill.Name };
+			}
 
 			return Task.FromResult(result);
 		}

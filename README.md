@@ -3,7 +3,7 @@ This is a WepAPI made in .NET Core which showcases a handling of a list of Conta
 
 ## How to use:
 - Open the json appsettings json files and set the link to your SQL server there
-- Generate the database: Go to the folder containing the context **Contacts.Core.Skills.Infrastructure/**, and execute the following CLI command:
+- Generate the database: Go to the project folder containing the context **Contacts.Core.Skills.Infrastructure/**, and execute the following CLI command:
 ``dotnet ef database update``
 - Launch the app using Contacts.API.UI -> **IIS Express**, which will open the Swagger page
 ![VisualStudio 19 Launch Picture](https://raw.githubusercontent.com/RavenTheorist/DotNetAPI_SkilledContacts/main/GithubReadmeImages/VS2019_LaunchSelection.jpg?raw=true)
@@ -21,6 +21,11 @@ This is a WepAPI made in .NET Core which showcases a handling of a list of Conta
    - Unity of Work
    - Repository
    - Mediator
+
+## Improvements / going farther:
+- Although a logger catching exceptions was implemented, we still need to add some more data validations when reading requests.
+- Use some more detailed status codes in the controller, using specific attributes/tags [] for each method.
+- Add CRUD endpoint for the ContactSkill joining table.
 
 ----------------------------------------------------------------------------------
 ### API Goal:

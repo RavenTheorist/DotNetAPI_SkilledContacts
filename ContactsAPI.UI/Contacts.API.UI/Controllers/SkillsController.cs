@@ -101,7 +101,7 @@ namespace Contacts.API.UI.Controllers
 			//			join contact in this._skillsContext.Contacts on skill.Contact.Id equals contact.Id
 			//			select skill;
 
-			var param = this.Request.Query["userId"];
+			//var param = this.Request.Query["userId"];
 
 			var model = this._mediator.Send(new SelectSkillsByNameQuery() { SkillName = skillName });
 

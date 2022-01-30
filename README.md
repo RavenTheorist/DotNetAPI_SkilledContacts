@@ -1,7 +1,7 @@
 # DotNetAPI_SkilledContacts
-A WepAPI made in .NET Core showcasing some of the possibilities, while handling a list of Contacts linked to a list of Skills
+This is a WepAPI made in .NET Core which showcases a handling of a list of Contacts linked to a list of Skills.
 
-N.B.:
+Please read this:
 - The project contains a custom logger CustomMessageLogger.cs to catch exceptions and warning.
 - Security was implemented, but commented/disabled for an easier use. CORS and JWT were implemented.
 - Migrations were generated, this project uses a code first approach in terms of Database.
@@ -14,7 +14,8 @@ N.B.:
    - Repository
    - Mediator
 
-Purpose:
+----------------------------------------------------------------------------------
+API Goal:
 Create the "Contacts API". It's a simple API, where a user can get a quick overview over all contacts resources like persons, skills...
 
 The following use cases should be implemented:

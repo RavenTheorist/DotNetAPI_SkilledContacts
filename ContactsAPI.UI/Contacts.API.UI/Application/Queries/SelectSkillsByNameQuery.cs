@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 namespace Contacts.API.UI.Application.Queries
 {
 	/// <summary>
-	/// Query to select all skills (through a DTO class)
+	/// Query to select all the skills by a given name
 	/// </summary>
-	public class SelectAllSkillsQuery : IRequest<List<SkillDTO>>
+	public class SelectSkillsByNameQuery : IRequest<List<SkillDTO>>
 	{
+		#region Properties
+		public string SkillName { get; set; }
+		#endregion
 	}
 }

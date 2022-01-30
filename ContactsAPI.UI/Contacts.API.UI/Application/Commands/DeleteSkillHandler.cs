@@ -1,5 +1,4 @@
-﻿using Contacts.API.UI.Application.Commands;
-using Contacts.Core.Skills.Domain;
+﻿using Contacts.Core.Skills.Domain;
 using ContactsAPI.UI.Application.DTOs;
 using MediatR;
 using System;
@@ -8,33 +7,26 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Contacts.API.UI.Controllers
+namespace Contacts.API.UI.Application.Commands
 {
-	public class AddSkillHandler : IRequestHandler<AddSkillCommand, SkillDTO>
+	public class DeleteSkillHandler : IRequestHandler<DeleteSkillCommand, SkillDTO>
 	{
 		#region Fields
 		private readonly ISkillRepository _repository = null;
 		#endregion//Fields
 
 		#region Constructors
-		public AddSkillHandler(ISkillRepository repository)
+		public DeleteSkillHandler(ISkillRepository repository)
 		{
 			this._repository = repository;
 		}
 		#endregion//Constructors
 
 		#region Public methods
-		public Task<SkillDTO> Handle(AddSkillCommand request, CancellationToken cancellationToken)
+		public Task<SkillDTO> Handle(DeleteSkillCommand request, CancellationToken cancellationToken)
 		{
-			SkillDTO result = null;
-
 			// Don't set the ID, because it increments automatically...
-			Skill addedSkill = this._repository.AddOne(new Skill()
-			{
-				Id = request.SkillDto.Id,
-				Name = request.SkillDto.Name,
-				Level = request.SkillDto.Level
-			});
+			Skill deletedSkill = this._repository.DeleteOne(request.SkillId);
 
 			// Save to database
 			try
@@ -46,12 +38,7 @@ namespace Contacts.API.UI.Controllers
 				Console.WriteLine("Exception thrown while trying to save db changes: %s", e.Message);
 			}
 
-			if (addedSkill != null)
-			{
-				// ...get the auto generated ID
-				request.SkillDto.Id = addedSkill.Id;
-				result = request.SkillDto;
-			}
+			SkillDTO result = new SkillDTO { Id = deletedSkill.Id, Level = deletedSkill.Level, Name = deletedSkill.Name };
 
 			return Task.FromResult(result);
 		}

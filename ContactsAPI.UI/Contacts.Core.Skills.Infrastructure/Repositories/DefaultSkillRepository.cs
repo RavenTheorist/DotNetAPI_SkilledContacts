@@ -23,7 +23,23 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 		#endregion//Constructors
 
 		#region Public methods
-		public ICollection<Skill> GetAll(string skillName)
+		public Skill AddOne(Skill skill)
+		{
+			return this._context.Skills.Add(skill).Entity;
+		}
+
+		public Skill UpdateOne(int skillId, Skill updatedSkill)
+		{
+			Skill existingSkill = this._context.Skills.Where(skill => skill.Id == skillId).First();
+
+			existingSkill.Name = updatedSkill.Name;
+			existingSkill.Level = updatedSkill.Level;
+
+			return existingSkill;
+		}
+
+		
+		public ICollection<Skill> GetByName(string skillName)
 		{
 			var query = this._context.Skills.Include(item => item.ContactSkills).AsQueryable();
 
@@ -35,9 +51,28 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 			return query.ToList();
 		}
 
-		public Skill AddOne(Skill skill)
+		public ICollection<Skill> GetAll()
 		{
-			return this._context.Skills.Add(skill).Entity;
+			var query = this._context.Skills.Include(item => item.ContactSkills).AsQueryable();
+
+			return query.ToList();
+		}
+
+		public Skill DeleteOne(int skillId)
+		{
+			Skill deletedSkill = null;
+
+			if (this._context.Skills.Count() > 0)
+			{
+				deletedSkill = this._context.Skills.Single(skill => skill.Id == skillId);
+
+				if (deletedSkill != null)
+				{
+					this._context.Skills.Remove(deletedSkill);
+				}
+			}
+
+			return deletedSkill;
 		}
 		#endregion//Public methods
 

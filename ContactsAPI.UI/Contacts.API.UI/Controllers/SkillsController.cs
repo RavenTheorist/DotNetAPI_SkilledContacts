@@ -42,26 +42,6 @@ namespace Contacts.API.UI.Controllers
 		#endregion//Constructors
 
 		#region Public methods
-		[HttpGet]
-		//[EnableCors(SecurityMethods.DEFAULT_POLICY_3)]
-		//[DisableCors]
-		public IActionResult GetAll([FromQuery]string skillName = "")
-		{
-			//var model = Enumerable.Range(1, 10).Select(index => new Skill() { Id = index });
-			//return this.StatusCode(StatusCodes.Status204NoContent);
-
-			//var model = this._skillsContext.Skills.ToList();
-			//var query = from skill in this._skillsContext.Skills
-			//			join contact in this._skillsContext.Contacts on skill.Contact.Id equals contact.Id
-			//			select skill;
-
-			var param = this.Request.Query["userId"];
-
-			var model = this._mediator.Send(new SelectAllSkillsQuery() { SkillName = skillName });
-
-			return this.Ok(model);
-		}
-
 		[HttpPost]
 		public async Task<IActionResult> AddOne(SkillDTO skillDto)
 		{
@@ -74,6 +54,76 @@ namespace Contacts.API.UI.Controllers
 			}
 
 			return result;
+		}
+
+		[HttpPatch]
+		public async Task<IActionResult> UpdateOne(int skillId, SkillDTO updatedSkill)
+		{
+			IActionResult result = this.BadRequest();
+
+			var skillResult = await this._mediator.Send(new UpdateSkillCommand() {
+				SkillId = skillId,
+				SkillDto = updatedSkill
+			});
+			if (skillResult != null)
+			{
+				result = this.Ok(skillResult);
+			}
+
+			return result;
+		}
+
+		[HttpDelete]
+		public async Task<IActionResult> DeleteOne(int skillId)
+		{
+			IActionResult result = this.BadRequest();
+
+			var skillResult = await this._mediator.Send(new DeleteSkillCommand() { SkillId = skillId });
+			if (skillResult != null)
+			{
+				result = this.Ok(skillResult);
+			}
+
+			return result;
+		}
+
+		[HttpGet]
+		[Route("GetByName")]
+		//[EnableCors(SecurityMethods.DEFAULT_POLICY_3)]
+		//[DisableCors]
+		public IActionResult GetByName([FromQuery] string skillName = "")
+		{
+			//var model = Enumerable.Range(1, 10).Select(index => new Skill() { Id = index });
+			//return this.StatusCode(StatusCodes.Status204NoContent);
+
+			//var model = this._skillsContext.Skills.ToList();
+			//var query = from skill in this._skillsContext.Skills
+			//			join contact in this._skillsContext.Contacts on skill.Contact.Id equals contact.Id
+			//			select skill;
+
+			var param = this.Request.Query["userId"];
+
+			var model = this._mediator.Send(new SelectSkillsByNameQuery() { SkillName = skillName });
+
+			return this.Ok(model);
+		}
+
+		[HttpGet]
+		//[EnableCors(SecurityMethods.DEFAULT_POLICY_3)]
+		//[DisableCors]
+		public IActionResult GetAll()
+		{
+			//var model = Enumerable.Range(1, 10).Select(index => new Skill() { Id = index });
+			//return this.StatusCode(StatusCodes.Status204NoContent);
+
+			//var model = this._skillsContext.Skills.ToList();
+			//var query = from skill in this._skillsContext.Skills
+			//			join contact in this._skillsContext.Contacts on skill.Contact.Id equals contact.Id
+			//			select skill;
+
+			var model = this._mediator.Send(new SelectAllSkillsQuery());
+
+			return this.Ok(model);
 		}
 		#endregion//Public methods
 	}

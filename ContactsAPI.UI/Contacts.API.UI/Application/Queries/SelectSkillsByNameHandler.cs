@@ -9,23 +9,25 @@ using System.Threading.Tasks;
 
 namespace Contacts.API.UI.Application.Queries
 {
-	public class SelectAllSkillsHandler : IRequestHandler<SelectAllSkillsQuery, List<SkillDTO>>
+	public class SelectSkillsByNameHandler : IRequestHandler<SelectSkillsByNameQuery, List<SkillDTO>>
 	{
 		#region Fields
 		private readonly ISkillRepository _repository = null;
 		#endregion//Fields
 
 		#region Constructors
-		public SelectAllSkillsHandler(ISkillRepository repository)
+		public SelectSkillsByNameHandler(ISkillRepository repository)
 		{
 			this._repository = repository;
 		}
 		#endregion//Constructors
 
 		#region Public methods
-		public Task<List<SkillDTO>> Handle(SelectAllSkillsQuery request, CancellationToken cancellationToken)
+		public Task<List<SkillDTO>> Handle(SelectSkillsByNameQuery request, CancellationToken cancellationToken)
 		{
-			var skillsList = this._repository.GetAll();
+			var skillsList = this._repository.GetByName(request.SkillName);
+
+			//result = skillsList.Select(item => new SkillResumeDTO() { SkillId = item.Id, SkillName = item.Name, SkillLevel = item.Level, NbSkillsFromThisContact = item.Contacts?.Count }).ToList();
 
 			var result = skillsList.Select(item => new SkillDTO() { Id = item.Id, Name = item.Name, Level = item.Level }).ToList();
 

@@ -2,7 +2,17 @@
 A WepAPI made in .NET Core showcasing some of the possibilities, while handling a list of Contacts linked to a list of Skills
 
 N.B.:
+- The project contains a custom logger CustomMessageLogger.cs to catch exceptions and warning.
+- Security was implemented, but commented/disabled for an easier use. CORS and JWT were implemented.
+- Migrations were generated, this project uses a code first approach in terms of Database.
 - Database server can be configured in the appsettings.json
+- The CRUD methods for the Skills are defined in the DefaultSkillRepository.cs and called from the SkillsController using a mediator
+- Some design patterns and principles were implemented in order to make the API more reliable, extensible and less prone to errors:
+   - Hexagonal Architecture: Domain, Infrastructure and the API
+   - Dependency Injections, following Microsoft Manual's advises and examples
+   - Unity of Work
+   - Repository
+   - Mediator
 
 Purpose:
 Create the "Contacts API". It's a simple API, where a user can get a quick overview over all contacts resources like persons, skills...

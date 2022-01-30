@@ -1,5 +1,4 @@
-﻿using Contacts.API.UI.Application.Commands;
-using Contacts.Core.Skills.Domain;
+﻿using Contacts.Core.Skills.Domain;
 using ContactsAPI.UI.Application.DTOs;
 using MediatR;
 using System;
@@ -8,28 +7,28 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Contacts.API.UI.Controllers
+namespace Contacts.API.UI.Application.Commands
 {
-	public class AddSkillHandler : IRequestHandler<AddSkillCommand, SkillDTO>
+	public class UpdateSkillHandler : IRequestHandler<UpdateSkillCommand, SkillDTO>
 	{
 		#region Fields
 		private readonly ISkillRepository _repository = null;
 		#endregion//Fields
 
 		#region Constructors
-		public AddSkillHandler(ISkillRepository repository)
+		public UpdateSkillHandler(ISkillRepository repository)
 		{
 			this._repository = repository;
 		}
 		#endregion//Constructors
 
 		#region Public methods
-		public Task<SkillDTO> Handle(AddSkillCommand request, CancellationToken cancellationToken)
+		public Task<SkillDTO> Handle(UpdateSkillCommand request, CancellationToken cancellationToken)
 		{
 			SkillDTO result = null;
 
 			// Don't set the ID, because it increments automatically...
-			Skill addedSkill = this._repository.AddOne(new Skill()
+			Skill updatedSkill = this._repository.UpdateOne(request.SkillId, new Skill()
 			{
 				Id = request.SkillDto.Id,
 				Name = request.SkillDto.Name,
@@ -46,10 +45,9 @@ namespace Contacts.API.UI.Controllers
 				Console.WriteLine("Exception thrown while trying to save db changes: %s", e.Message);
 			}
 
-			if (addedSkill != null)
+			if (updatedSkill != null)
 			{
 				// ...get the auto generated ID
-				request.SkillDto.Id = addedSkill.Id;
 				result = request.SkillDto;
 			}
 

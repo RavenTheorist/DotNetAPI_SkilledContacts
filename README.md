@@ -4,7 +4,7 @@ This is a WepAPI made in .NET Core which showcases a handling of a list of Conta
 ## How to use:
 - Open the json appsettings json files and set the link to your SQL server there
 - Generate the database: Go to the folder containing the context **Contacts.Core.Skills.Infrastructure/**, and execute the following CLI command:
-``dotnet ef migrations add InitDatabase --project=..\Contacts.Core.Skills.Data.Migrations``
+``dotnet ef database update``
 - Launch the app using Contacts.API.UI -> **IIS Express**, which will open the Swagger page
 ![VisualStudio 19 Launch Picture](https://raw.githubusercontent.com/RavenTheorist/DotNetAPI_SkilledContacts/main/GithubReadmeImages/VS2019_LaunchSelection.jpg?raw=true)
 

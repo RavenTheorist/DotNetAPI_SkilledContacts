@@ -32,7 +32,8 @@ namespace Contacts.API.UI.Controllers
 			Skill addedSkill = this._repository.AddOne(new Skill()
 			{
 				Id = request.SkillDto.Id,
-				Name = request.SkillDto.Name
+				Name = request.SkillDto.Name,
+				Level = request.SkillDto.Level
 			});
 
 			// Save to database

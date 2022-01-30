@@ -29,7 +29,38 @@ namespace Contacts.API.UI.ExtensionMethods
 		public static void AddCustomSecurity(this IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddCustomCors(configuration); // CORS
-			services.AddCustomAuthentication(configuration); // JWT
+			//services.AddCustomAuthentication(configuration); // JWT
+		}
+
+		public static void AddCustomCors(this IServiceCollection services, IConfiguration configuration)
+		{
+			// Bind the Json Cors.Origin to a new CorsOption's attribute named "Origin"
+			CorsOption corsOption = new CorsOption();
+			configuration.GetSection("Cors").Bind(corsOption);
+
+			services.AddCors(options =>
+			{
+				options.AddPolicy(DEFAULT_POLICY, builder =>
+				{
+					builder.WithOrigins(corsOption.Origin)              // Allow anything from any origin
+						   .AllowAnyHeader()                            // Allow anything coming from headers
+						   .AllowAnyMethod();                           // Allow all methods (GET, PUT, POST, etc)
+				});
+
+				options.AddPolicy(DEFAULT_POLICY_2, builder =>
+				{
+					builder.WithOrigins("http://127.0.0.1:5501")    // Allow anything from a specifc origin
+						   .AllowAnyHeader()                        // Allow anything coming from headers
+						   .AllowAnyMethod();                       // Allow all methods (GET, PUT, POST, etc)
+				});
+
+				options.AddPolicy(DEFAULT_POLICY_3, builder =>
+				{
+					builder.WithOrigins("http://127.0.0.1:5502")    // Allow anything from a specifc origin
+						   .AllowAnyHeader()                        // Allow anything coming from headers
+						   .AllowAnyMethod();                       // Allow all methods (GET, PUT, POST, etc)
+				});
+			});
 		}
 
 		public static void AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
@@ -57,37 +88,6 @@ namespace Contacts.API.UI.ExtensionMethods
 					ValidateActor = false,
 					ValidateLifetime = true // Sets a timeout for the token
 				};
-			});
-		}
-
-		public static void AddCustomCors(this IServiceCollection services, IConfiguration configuration)
-		{
-			// Bind the Json Cors.Origin to a new CorsOption's attribute named "Origin"
-			CorsOption corsOption = new CorsOption();
-			configuration.GetSection("Cors").Bind(corsOption);
-
-			services.AddCors(options =>
-			{
-				options.AddPolicy(DEFAULT_POLICY, builder =>
-				{
-					builder.WithOrigins(corsOption.Origin)				// Allow anything from any origin
-						   .AllowAnyHeader()                            // Allow anything coming from headers
-						   .AllowAnyMethod();                           // Allow all methods (GET, PUT, POST, etc)
-				});
-
-				options.AddPolicy(DEFAULT_POLICY_2, builder =>
-				{
-					builder.WithOrigins("http://127.0.0.1:5501")    // Allow anything from any origin
-						   .AllowAnyHeader()                        // Allow anything coming from headers
-						   .AllowAnyMethod();                       // Allow all methods (GET, PUT, POST, etc)
-				});
-
-				options.AddPolicy(DEFAULT_POLICY_3, builder =>
-				{
-					builder.WithOrigins("http://127.0.0.1:5502")    // Allow anything from any origin
-						   .AllowAnyHeader()                        // Allow anything coming from headers
-						   .AllowAnyMethod();                       // Allow all methods (GET, PUT, POST, etc)
-				});
 			});
 		}
 		#endregion//Public methods

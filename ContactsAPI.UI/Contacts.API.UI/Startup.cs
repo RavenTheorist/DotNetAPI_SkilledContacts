@@ -81,10 +81,10 @@ namespace Contacts.API.UI
 			app.UseRouting();
 
 			// Enable Cors
-			app.UseCors(SecurityMethods.DEFAULT_POLICY_2);
+			app.UseCors(SecurityMethods.DEFAULT_POLICY); // Fallback CORS policy
 
-			// Enable Authentication for JWT
-			app.UseAuthentication();
+			// Enable this for JWP Authentication
+			//app.UseAuthentication();
 
 			app.UseAuthorization();
 

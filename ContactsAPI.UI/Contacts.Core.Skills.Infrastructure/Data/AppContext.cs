@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Contacts.Core.Skills.Infrastructure.Data
 {
-	public class AppContext : DbContext, IUnitOfWork
+	public class AppContext : DbContext, IUnitOfWork // Inherit from IdentityDbContext instead of DbContext to enable JWP Authentication
 	{
 		#region Constructors
 		public AppContext([NotNullAttribute] DbContextOptions options) : base(options) { }

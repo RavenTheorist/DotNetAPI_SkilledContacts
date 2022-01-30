@@ -10,10 +10,10 @@ namespace Contacts.API.UI.Application.Queries
 	/// <summary>
 	/// Query to select all skills (through a DTO class)
 	/// </summary>
-	public class SelectAllSkillsQuery : IRequest<List<SkillResumeDTO>>
+	public class SelectAllSkillsQuery : IRequest<List<SkillDTO>>
 	{
 		#region Properties
-		public string ContactEmail { get; set; }
+		public string SkillName { get; set; }
 		#endregion
 	}
 }

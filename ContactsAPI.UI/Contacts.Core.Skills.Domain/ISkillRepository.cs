@@ -15,7 +15,7 @@ namespace Contacts.Core.Skills.Domain
 		/// <summary>
 		/// Get all the Skills
 		/// </summary>
-		ICollection<Skill> GetAll(string contactEmail);
+		ICollection<Skill> GetAll(string skillName);
 
 		/// <summary>
 		/// Add one skill in the database

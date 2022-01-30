@@ -23,13 +23,13 @@ namespace Contacts.Core.Skills.Infrastructure.Repositories
 		#endregion//Constructors
 
 		#region Public methods
-		public ICollection<Skill> GetAll(string contactEmail)
+		public ICollection<Skill> GetAll(string skillName)
 		{
-			var query = this._context.Skills.Include(item => item.Contacts).AsQueryable();
+			var query = this._context.Skills.Include(item => item.ContactSkills).AsQueryable();
 
-			if (contactEmail.Length > 0)
+			if (skillName.Length >= 0)
 			{
-				//query = query.Where(item => item.ContactEmail == contactEmail);
+				query = query.Where(item => item.Name == skillName);
 			}
 
 			return query.ToList();

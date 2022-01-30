@@ -22,7 +22,7 @@ namespace Contacts.API.UI.Controllers
 {
 	[ApiController]
 	[Route("api/v1/[controller]")]
-	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+	//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 	[EnableCors(SecurityMethods.DEFAULT_POLICY)]
 	public class SkillsController : ControllerBase
 	{
@@ -45,7 +45,7 @@ namespace Contacts.API.UI.Controllers
 		[HttpGet]
 		//[EnableCors(SecurityMethods.DEFAULT_POLICY_3)]
 		//[DisableCors]
-		public IActionResult GetAll([FromQuery]string contactEmail = "")
+		public IActionResult GetAll([FromQuery]string skillName = "")
 		{
 			//var model = Enumerable.Range(1, 10).Select(index => new Skill() { Id = index });
 			//return this.StatusCode(StatusCodes.Status204NoContent);
@@ -57,17 +57,10 @@ namespace Contacts.API.UI.Controllers
 
 			var param = this.Request.Query["userId"];
 
-			var model = this._mediator.Send(new SelectAllSkillsQuery() { ContactEmail = contactEmail });
+			var model = this._mediator.Send(new SelectAllSkillsQuery() { SkillName = skillName });
 
 			return this.Ok(model);
 		}
-
-		//[HttpGet("{id}")]
-		//public IActionResult GetValue(int id, string version)
-		//{
-		//	var value = $"Value {id} of version {version}";
-		//	return Ok(value);
-		//}
 
 		[HttpPost]
 		public async Task<IActionResult> AddOne(SkillDTO skillDto)
